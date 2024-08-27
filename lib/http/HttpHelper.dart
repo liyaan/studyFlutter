@@ -132,7 +132,7 @@ class HttpHelper {
       }) async {
     //这里指定response自动转成map,不指定的话有可能是String类型
     Response<Map<String, dynamic>>? response;
-
+    if(!loading) loading = true;
 
     if(loading) {
       ToastMsg.showLoading();

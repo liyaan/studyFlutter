@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class ToastMsg{
@@ -15,10 +16,10 @@ class ToastMsg{
   }
 
   static void showLoading() {
-    Fluttertoast.cancel();
+    EasyLoading.show(status: "loading…");
   }
 
   static void cancelLoading() {
-    Fluttertoast.cancel();
+    EasyLoading.dismiss();
   }
 }

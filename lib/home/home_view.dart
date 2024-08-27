@@ -243,6 +243,7 @@ class HomeViewPageState extends GetView<HomeViewController> {
           color: Colors.white10,
         ),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Image.asset(
               'images/icon_open.png',
@@ -256,6 +257,7 @@ class HomeViewPageState extends GetView<HomeViewController> {
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     entity.name,
@@ -264,9 +266,6 @@ class HomeViewPageState extends GetView<HomeViewController> {
                     style: const TextStyle(
                       fontSize: 14.0,
                     ),
-                  ),
-                  const SizedBox(
-                    height: 10.0,
                   ),
                   Text(
                     entity.category,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get_storage/get_storage.dart';
@@ -66,6 +67,7 @@ class MyApp extends StatelessWidget {
       theme:
           ThemeData(primarySwatch: Colors.blue, brightness: Brightness.light),
       initialRoute: isLogin() ? HOME : LOGIN,
+      builder: EasyLoading.init(),
       getPages: [
         GetPage(
           name: LOGIN,
