@@ -15,8 +15,13 @@ class CollectAddJson{
     data["link"] = link;
     BaseRes<CollectAddEntity>? entity = await HttpHelper
         .instance?.postHttp(Const.COLLECT_ADD_JSON, data);
-    if(entity!=null && entity.errorCode==0){
-      ToastMsg.show("收藏成功");
+    if(entity!=null){
+      if(entity.errorCode==0){
+        ToastMsg.show("收藏成功");
+      }else{
+        ToastMsg.show(entity.errorMsg);
+      }
     }
+
   }
 }
