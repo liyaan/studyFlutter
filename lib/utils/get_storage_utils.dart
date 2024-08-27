@@ -34,4 +34,9 @@ class GetStorageUtils{
       return false;
     }
   }
+  static bool clearLoginData() {
+    GetStorageUtils.removeData(Const.LOGIN_NAME);
+    GetStorageUtils.removeData(Const.LOGIN_PASSWORD);
+    return isLogin();
+  }
 }

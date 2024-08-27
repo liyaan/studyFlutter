@@ -33,7 +33,7 @@ class LoginController extends GetxController {
           GetStorageUtils.writeData(Const.LOGIN_NAME, username);
           GetStorageUtils.writeData(Const.LOGIN_PASSWORD, password);
           print(GetStorageUtils.readData(Const.LOGIN_NAME));
-          Get.offAndToNamed('/home');
+          Get.offAllNamed(HOME);
         }else{
           ToastMsg.show(entity.errorMsg);
         }

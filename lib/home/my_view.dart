@@ -32,55 +32,80 @@ class MyViewPageState extends GetView<MyController> {
                     blurRadius: 6,
                   )
                 ]),
-            child: Row(
-              children: [
-                Image.asset(
-                  "images/home_header_photo.png",
-                  width: 50.0,
-                  height: 50.0,
-                  fit: BoxFit.fill,
-                ),
-                const SizedBox(
-                  width: 10.0,
-                ),
-                GestureDetector(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        GetStorageUtils.isLogin()?GetStorageUtils.readData(Const.LOGIN_NAME):"用户名称",
-                        style: const TextStyle(
-                          fontSize: 16.0,
-                          color: Colors.white,
+            child: Obx((){
+              return Row(
+                children: [
+                  Image.asset(
+                    "images/home_header_photo.png",
+                    width: 50.0,
+                    height: 50.0,
+                    fit: BoxFit.fill,
+                  ),
+                  const SizedBox(
+                    width: 10.0,
+                  ),
+                  Expanded(
+                    child: GestureDetector(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            controller.isLogin.value
+                                ? GetStorageUtils.readData(Const.LOGIN_NAME)
+                                : "用户名称",
+                            style: const TextStyle(
+                              fontSize: 16.0,
+                              color: Colors.white,
+                            ),
+                          ),
+                          const Text(
+                            "用户等级",
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.grey,
+                            ),
+                          )
+                        ],
+                      ),
+                      onTap: () {
+                        if (GetStorageUtils.isLogin()) {
+                          ToastMsg.show("已经登陆,信息详情正在开发中");
+                        } else {
+                          Get.toNamed(LOGIN);
+                        }
+                      },
+                    ),
+                  ),
+                  GestureDetector(
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: const Text(
+                        "退出登录",
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 14.0,
                         ),
                       ),
-                      const Text(
-                        "用户等级",
-                        style: TextStyle(
-                          fontSize: 14.0,
-                          color: Colors.grey,
-                        ),
-                      )
-                    ],
-                  ),
-                  onTap: () {
-                    if(GetStorageUtils.isLogin()){
-                      ToastMsg.show("已经登陆,信息详情正在开发中");
-                    }else{
-                      Get.toNamed(LOGIN);
-                    }
+                    ),
+                    onTap: (){
+                      if(controller.isLogin.value){
+                        controller.exitLogin();
+                      }else{
+                        ToastMsg.show("请先去登录");
+                      }
 
-                  },
-                ),
-              ],
-            ),
+                    },
+                  ),
+                ],
+              );
+            }),
           ),
           GestureDetector(
             child: Container(
               width: MediaQuery.of(context).size.width,
               height: 40,
-              margin: const EdgeInsets.only(top: 10.0,left: 10.0,right: 10.0),
+              margin: const EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.blue,
@@ -99,16 +124,15 @@ class MyViewPageState extends GetView<MyController> {
                 ),
               ),
             ),
-            onTap: (){
+            onTap: () {
               Get.toNamed(PROJECT_TAB_VIEW);
             },
           ),
-
           GestureDetector(
             child: Container(
               width: MediaQuery.of(context).size.width,
               height: 40,
-              margin: const EdgeInsets.only(top: 10.0,left: 10.0,right: 10.0),
+              margin: const EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.blue,
@@ -127,16 +151,15 @@ class MyViewPageState extends GetView<MyController> {
                 ),
               ),
             ),
-            onTap: (){
+            onTap: () {
               Get.toNamed(SCROLL_VIEW_TAB_VIEW);
             },
           ),
-
           GestureDetector(
             child: Container(
               width: MediaQuery.of(context).size.width,
               height: 40,
-              margin: const EdgeInsets.only(top: 10.0,left: 10.0,right: 10.0),
+              margin: const EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.blue,
@@ -155,16 +178,15 @@ class MyViewPageState extends GetView<MyController> {
                 ),
               ),
             ),
-            onTap: (){
+            onTap: () {
               Get.toNamed(TAB_BAR_VIEW_TAB_VIEW);
             },
           ),
-
           GestureDetector(
             child: Container(
               width: MediaQuery.of(context).size.width,
               height: 40,
-              margin: const EdgeInsets.only(top: 10.0,left: 10.0,right: 10.0),
+              margin: const EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.blue,
@@ -183,7 +205,7 @@ class MyViewPageState extends GetView<MyController> {
                 ),
               ),
             ),
-            onTap: (){
+            onTap: () {
               Get.toNamed(STICK_SLIVER_LIST_VIEW);
             },
           ),
@@ -191,5 +213,4 @@ class MyViewPageState extends GetView<MyController> {
       ),
     );
   }
-
 }

@@ -137,7 +137,7 @@ class HttpHelper {
     if(loading) {
       ToastMsg.showLoading();
     }
-    print("url = ${url}");
+
     switch (method) {
       case GET:
         response = await getDio()?.get(url,
@@ -156,7 +156,7 @@ class HttpHelper {
         await getDio()?.post(url, data: parameters ?? <String, dynamic>{});
         break;
     }
-    print("response = ${response.toString()}");
+    print("url=$url parameters=$parameters  response = ${response.toString()}");
     // print("headers = ${response?.headers["set-cookie"]}");
     // response?.headers["set-cookie"]?.toList().forEach((element) {
     //   print("element = $element");

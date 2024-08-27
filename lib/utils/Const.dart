@@ -17,7 +17,9 @@ class Const{
 
   static const String PROJECT_TREE_LIST_JSON = '/project/list/'; //项目列表数据
   static const String USER_LOGIN_JSON = '/user/login'; //登录
-  static const String USER_REGISTER_JSON = '/user/register'; //登录
+  static const String USER_REGISTER_JSON = '/user/register'; //注册
 
-  static const String COLLECT_ADD_JSON = '/lg/collect/add/json'; //登录
+  static const String COLLECT_ADD_JSON = '/lg/collect/add/json'; //收藏
+
+  static const String EXIT_LOGIN_JSON = '/user/logout/json'; //退出登录
 }
